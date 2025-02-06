@@ -24,14 +24,17 @@ jobs:
       - name: Build Vue.js App
         run: npm run build
 
-      - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@master
+      - name: Configure AWS CLI
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          source_dir: './dist'  # Specify the dist/ folder as the source directory
-          destination_dir: '/'  # This specifies the root of the bucket
-          args: --delete         # Deletes files in the destination that are no longer in the source
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Sync dist/ folder to S3
+        run: |
+          aws s3 sync ./dist/ s3://${{ secrets.AWS_S3_BUCKET }}/ --delete
         env:
-          AWS_S3_BUCKET: "vue-with-vite-hosting"
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: "us-east-1"
+          AWS_REGION: ${{ secrets.AWS_REGION }}
