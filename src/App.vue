@@ -3,6 +3,7 @@
 
 <template>
   <div>Develop Branch</div>
+  <div>Main branch</div>
 </template>
 
 <style scoped>
