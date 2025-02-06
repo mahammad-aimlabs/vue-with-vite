@@ -2,7 +2,7 @@
 </script>
 
 <template>
-  <div>ewjnfjewgn</div>
+  <div>Main branch</div>
 </template>
 
 <style scoped>
