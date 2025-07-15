@@ -1,21 +1,36 @@
 {
-  "name": "vue-with-vite",
-  "private": true,
+  "name": "twist-turbo",
   "version": "0.0.0",
-  "type": "module",
+  "private": true,
+	"license": "MIT",
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "lint": "turbo run lint",
+    "format": "turbo run format",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "preview": "turbo run preview",
+    "real-build-storybook": "turbo run real-build-storybook",
+    "storybook": "turbo run storybook",
+    "publish-packages": "turbo run build lint test && changeset version && changeset publish",
+    "e2e": "turbo run e2e",
+    "e2e-smoke": "turbo run e2e-smoke",
+    "e2e-mobile": "turbo run e2e-mobile"
   },
   "dependencies": {
-    "vue": "^3.5.13"
+    "eslint": "9.21.0",
+    "eslint-config-custom": "workspace:*",
+    "prettier": "3.5.2",
+    "prettier-plugin-svelte": "3.3.3",
+    "turbo": "2.4.4"
   },
-  "devDependencies": {
-    "@vitejs/plugin-vue": "^5.2.1",
-    "@vue/tsconfig": "^0.7.0",
-    "typescript": "~5.7.2",
-    "vite": "^6.1.0",
-    "vue-tsc": "^2.2.0"
+  "engines": {
+    "node": ">=22.16.0"
+  },
+  "packageManager": "pnpm@10.5.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "svelte-preprocess"
+    ]
   }
 }
