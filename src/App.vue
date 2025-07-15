@@ -10,7 +10,7 @@
 .header{
   width: 100%;
   height: 100px;
-  background-color: aqua;
+  background-color: blue;
 }
 .content{
   width: 100%;
