@@ -3,7 +3,7 @@
 
 <template>
   <div class="header"></div>
-  <div class="content"></div>
+  <!-- <div class="content"></div> -->
 </template>
 
 <style scoped>
